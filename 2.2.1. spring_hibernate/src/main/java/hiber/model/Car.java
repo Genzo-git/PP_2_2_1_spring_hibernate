@@ -17,12 +17,21 @@ public class Car {
     @Column(name = "series")
     private int series;
 
+    @OneToOne(mappedBy = "car")
+    private User user;
+
     public Car() {
     }
 
     public Car(String model, int series) {
         this.model = model;
         this.series = series;
+    }
+
+    public Car(String model, int series, User user) {
+        this.model = model;
+        this.series = series;
+        this.user = user;
     }
 
     public Long getId() {
@@ -49,11 +58,23 @@ public class Car {
         this.series = series;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+
+        this.user = user;
+//        user.setCar(this);
+    }
+
     @Override
     public String toString() {
         return "Car{" +
-                "model='" + model + '\'' +
+                "id=" + id +
+                ", model='" + model + '\'' +
                 ", series=" + series +
+                ", user=" + user +
                 '}';
     }
 }

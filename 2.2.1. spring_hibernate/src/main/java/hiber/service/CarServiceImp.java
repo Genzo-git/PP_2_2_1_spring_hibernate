@@ -11,18 +11,33 @@ import java.util.List;
 @Service
 public class CarServiceImp implements CarService {
 
-    @Autowired
+
     private CarDao carDao;
+
+    @Autowired
+    public void setCarDao(CarDao carDao) {
+        this.carDao = carDao;
+    }
 
     @Override
     @Transactional
     public void addCar(Car car) {
-        carDao.addCar(car);
+        carDao.addUser(car);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<Car> getListCars() {
-        return carDao.listUsers();
+        return carDao.getListCars();
+    }
+
+    @Override
+    public Car getCar(String model, int series) {
+        return carDao.getCar(model, series);
+    }
+
+    @Override
+    public Car getCar(long id) {
+        return carDao.getCar(id);
     }
 }

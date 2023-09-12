@@ -10,18 +10,20 @@ import java.util.List;
 
 @Repository
 public class UserDaoImp implements UserDao {
-
-    @Autowired
     private SessionFactory sessionFactory;
+    @Autowired
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Override
-    public void add(User user) {
+    public void addUser(User user) {
         sessionFactory.getCurrentSession().save(user);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<User> listUsers() {
+    public List<User> getListUsers() {
         TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User");
         return query.getResultList();
     }
@@ -32,7 +34,7 @@ public class UserDaoImp implements UserDao {
         TypedQuery<User> query = sessionFactory.getCurrentSession()
                 .createQuery("from User user where user.car.model = :model and user.car.series = :series");
         query.setParameter("model", model).setParameter("series", series);
-        return query.getSingleResult();
+        return (User) query.getResultList().get(0);
     }
 
 }
