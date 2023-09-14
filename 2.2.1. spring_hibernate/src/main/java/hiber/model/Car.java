@@ -17,7 +17,7 @@ public class Car {
     @Column(name = "series")
     private int series;
 
-    @OneToOne(mappedBy = "car")
+    @OneToOne
     private User user;
 
     public Car() {
@@ -63,9 +63,7 @@ public class Car {
     }
 
     public void setUser(User user) {
-
         this.user = user;
-//        user.setCar(this);
     }
 
     @Override
@@ -74,7 +72,6 @@ public class Car {
                 "id=" + id +
                 ", model='" + model + '\'' +
                 ", series=" + series +
-                ", user=" + user +
                 '}';
     }
 }

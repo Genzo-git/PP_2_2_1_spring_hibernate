@@ -9,7 +9,4 @@ public interface CarService {
 
     List<Car> getListCars();
 
-    Car getCar(String model, int series);
-
-    Car getCar(long id);
 }

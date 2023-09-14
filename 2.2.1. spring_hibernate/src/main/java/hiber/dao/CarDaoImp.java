@@ -19,9 +19,9 @@ public class CarDaoImp implements CarDao {
         this.sessionFactory = sessionFactory;
     }
 
-//    public CarDaoImp(SessionFactory sessionFactory) {
-//        this.sessionFactory = sessionFactory;
-//    }
+    public CarDaoImp(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Override
     public void addUser(Car car) {
@@ -31,7 +31,6 @@ public class CarDaoImp implements CarDao {
     @Override
     @SuppressWarnings("unchecked")
     public List<Car> getListCars() {
-//        return sessionFactory.getCurrentSession().createQuery("from Car").getResultList();
         TypedQuery<Car> query = sessionFactory.getCurrentSession().createQuery("from Car");
         return query.getResultList();
 

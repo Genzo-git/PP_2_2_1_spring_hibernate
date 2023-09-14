@@ -9,7 +9,6 @@ public interface CarDao {
 
     List<Car> getListCars();
 
-    //
     Car getCar(String model, int series);
 
     Car getCar(long id);

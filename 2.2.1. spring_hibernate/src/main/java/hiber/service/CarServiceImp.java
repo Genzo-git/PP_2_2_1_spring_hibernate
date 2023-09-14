@@ -11,7 +11,6 @@ import java.util.List;
 @Service
 public class CarServiceImp implements CarService {
 
-
     private CarDao carDao;
 
     @Autowired
@@ -31,13 +30,5 @@ public class CarServiceImp implements CarService {
         return carDao.getListCars();
     }
 
-    @Override
-    public Car getCar(String model, int series) {
-        return carDao.getCar(model, series);
-    }
-
-    @Override
-    public Car getCar(long id) {
-        return carDao.getCar(id);
-    }
 }
+
